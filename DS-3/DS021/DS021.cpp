@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -26,12 +27,10 @@ void Student::print() const {
 int main() {
 
     Student s1;
-    char word[100];
     int jumsu[3];
     s1.score = jumsu;
     cin >> s1.sid >> s1.score[0] >> s1.score[1] >> s1.score[2];
     cin.ignore();
-    cin.getline(word, 100);
-    s1.name = word;
+    getline(cin, s1.name);
     s1.print();
 }

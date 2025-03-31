@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -20,10 +21,7 @@ class English_Score {
     }
     
     void English_Score::score_in() {
-        char word[100];
-
-        cin.getline(word, 100);
-        name = word;
+        getline(cin, name);
         while (1) {
             cout << "LC > ";
             cin >> lc_score;

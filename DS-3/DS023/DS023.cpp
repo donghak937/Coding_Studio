@@ -11,7 +11,7 @@ public:
     string gram;
     void size_add(Product* &class_adress, int size);
     void Product_add();
-    void print_product(Product*& class_adress, int size);
+    void print_product(Product* &class_adress, int size);
     int cal_price(Product s);
 
 };
@@ -28,7 +28,7 @@ void Product::size_add(Product* &class_adress, int size) {
     }
     delete[](class_adress);
     class_adress = newOne;
-    newOne = NULL;
+    //newOne = NULL;
 
 
 }
@@ -43,16 +43,16 @@ void Product::Product_add() {
     
 }
 
-void Product::print_product(Product*& class_adress, int size) {
+void Product::print_product(Product* &class_adress, int size) {
     Product* printer;
     printer = class_adress;
     for (int i = 0; i < size; i++) {
         if (printer[i].discountRate == 0) {
-            cout << cal_price(printer[i]) << " (" << printer[i].discountRate << "%)\t " << printer[i].name;
+            cout << cal_price(printer[i]) << " (" << printer[i].discountRate << "%)\t" << printer[i].name;
             cout << " " << printer[i].gram << " " << printer[i].maker << endl;
         }
         else {
-            cout << cal_price(printer[i]) << " (-" << printer[i].discountRate << "%)\t " << printer[i].name;
+            cout << cal_price(printer[i]) << " (-" << printer[i].discountRate << "%)\t" << printer[i].name;
             cout << " " << printer[i].gram << " " << printer[i].maker << endl;
         }
         
@@ -94,5 +94,3 @@ int userInput() {
     cin >> input;
     return input;
 }
-
-
