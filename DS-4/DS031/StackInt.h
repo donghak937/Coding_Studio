@@ -9,7 +9,7 @@ private:
 public:
     MyStackInt(int size);    // constructor to make the Stack with size 
     ~MyStackInt();           // Destructor to remove from memory 
-    void push(int x);   // push function for inserting an element at the top of Stack
+    void push(int& x);   // push function for inserting an element at the top of Stack
     int pop();          // pop function for deleting the topmost element
     int isFull();       // check either the Stack is full or not
     int isEmpty();      // check either Stack is empty or not

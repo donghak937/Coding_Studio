@@ -28,6 +28,7 @@ public class Main {
             }
         }
         System.out.printf("\ntotal - %d", count);
+        
         sc.close(); 
 
     }

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -9,43 +10,24 @@ public:
     double discountRate;
     string maker;
     string gram;
-    void size_add(Product* &class_adress, int size);
-    void Product_add();
-    void print_product(Product* &class_adress, int size);
+    void Product_add(Product &p);
+    void print_product(Product a[], int size);
     int cal_price(Product s);
 
 };
 
-void Product::size_add(Product* &class_adress, int size) {
-    Product* newOne = new Product[size + 2];
-    //memcpy(newOne, class_adress, size);
-    for (int i = 0; i < size+1; i++) {
-        newOne[i].name = class_adress[i].name;
-        newOne[i].orginalPrice = class_adress[i].orginalPrice;
-        newOne[i].discountRate = class_adress[i].discountRate;
-        newOne[i].maker = class_adress[i].maker;
-        newOne[i].gram = class_adress[i].gram;
-    }
-    delete[](class_adress);
-    class_adress = newOne;
-    //newOne = NULL;
-
-
-}
-
-void Product::Product_add() {
-    char word[100];
+void Product::Product_add(Product &p) {
+    Product* s;
+    s = &p; 
     cin.ignore();
-    cin.getline(word, 100);
-    name = word;
-
-    cin >> orginalPrice >> discountRate >> gram >> maker;
+    getline(cin, name);
+    cin >> s->orginalPrice >> s->discountRate >> s->gram >> s->maker;
+    delete s;
     
 }
 
-void Product::print_product(Product* &class_adress, int size) {
+void Product::print_product(Product a[], int size) {
     Product* printer;
-    printer = class_adress;
     for (int i = 0; i < size; i++) {
         if (printer[i].discountRate == 0) {
             cout << cal_price(printer[i]) << " (" << printer[i].discountRate << "%)\t" << printer[i].name;
@@ -66,7 +48,7 @@ int Product::cal_price(Product s) {
 int userInput();
 int main() {
 
-    Product* s = new Product[1];
+    Product* list[100];
     int input;
     int i = 0;
 
@@ -75,12 +57,11 @@ int main() {
         input = userInput();
 
         if (input == 1) {
-
-            s[i].Product_add();
-            s[i].size_add(s, i);
+            list[i] = new Product;
+            list[i]->Product_add(*list[i]);
             i++;
         }
-        else if (input == 2) s[i].print_product(s, i);
+        else if (input == 2) list[i]->print_product(*list, i);
         else if (input == 3) break;
         else cout << "PLZ Enter vaild Number!\n";
 

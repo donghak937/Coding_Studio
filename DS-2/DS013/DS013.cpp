@@ -21,9 +21,24 @@ void displayMenus(Cafe& r1);
 
 int main() {
 
-    Cafe cafe1;
-    addCafe(cafe1);
-    displayMenus(cafe1);
+    //강의중에 나온 것
+    Cafe* cafe1 = new Cafe;
+    addCafe(*cafe1);
+    displayMenus(*cafe1);
+
+    //스스로 생각해서 썼던 것
+    //Cafe cafe1;
+   // addCafe(cafe1);
+    //displayMenus(cafe1);
+
+
+    //delete[] my_cafe.menu_list;
+
+    delete[] cafe1->menuList;
+    //delete cafe;
+    
+
+
 }
 
 void addCafe(Cafe& r1) {
