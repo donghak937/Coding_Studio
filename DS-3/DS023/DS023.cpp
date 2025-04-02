@@ -3,75 +3,92 @@
 
 using namespace std;
 
+
+
 class Product {
-public:
+private:
     string name;
     int orginalPrice;
     double discountRate;
     string maker;
     string gram;
-    void Product_add(Product &p);
-    void print_product(Product a[], int size);
-    int cal_price(Product s);
+    double calPrices;
+public:
+    Product(string sname, int sprice, double rate, string weight, string make) {
+        name = sname;
+        orginalPrice = sprice;
+        discountRate = rate;
+        maker = make;
+        gram = weight;
+        calPrices = orginalPrice - (orginalPrice * discountRate * 0.01);
+    }
+    ~Product();
+    void forPrint() {
+        if (discountRate == 0) {
+            cout << calPrices << " (" << discountRate << "%)\t" << name;
+            cout << " " << gram << " " << maker << endl;
+        }
+        else {
+            cout << calPrices << " (-" << discountRate << "%)\t" << name;
+            cout << " " << gram << " " << maker << endl;
+        }          
+    }
+};
+
+
+class ProductManager {
+private:
+    Product* Products[100];
+    int count;
+public:
+    ProductManager() {
+        count = 0;
+    }
+    ~ProductManager() {}
+    int getCount() { return count; }
+
+    void printAllProduct();
+    void addProduct();
 
 };
 
-void Product::Product_add(Product &p) {
-    Product* s;
-    s = &p; 
-    cin.ignore();
-    getline(cin, name);
-    cin >> s->orginalPrice >> s->discountRate >> s->gram >> s->maker;
-    delete s;
-    
-}
-
-void Product::print_product(Product a[], int size) {
-    Product* printer;
-    for (int i = 0; i < size; i++) {
-        if (printer[i].discountRate == 0) {
-            cout << cal_price(printer[i]) << " (" << printer[i].discountRate << "%)\t" << printer[i].name;
-            cout << " " << printer[i].gram << " " << printer[i].maker << endl;
-        }
-        else {
-            cout << cal_price(printer[i]) << " (-" << printer[i].discountRate << "%)\t" << printer[i].name;
-            cout << " " << printer[i].gram << " " << printer[i].maker << endl;
-        }
-        
+void ProductManager::printAllProduct() {
+    for (int i = 0; i < count; i++) {
+        Products[i]->forPrint();
     }
 }
+void ProductManager::addProduct() {
+    string name;
+    int price;
+    double disRate;
+    string makers;
+    string grams;
 
-int Product::cal_price(Product s) {
-    return s.orginalPrice - (s.orginalPrice * s.discountRate * 0.01);
+    cin.ignore();
+    getline(cin, name);
+    
+    cin >> price >> disRate >> grams >> makers;
+
+    Products[count] = new Product(name, price, disRate, grams, makers);
+    count++;
+
 }
 
-int userInput();
 int main() {
 
-    Product* list[100];
+    ProductManager manager;
     int input;
     int i = 0;
 
     while (1) {
         cout << "1.Add 2.List 3.Quit > ";
-        input = userInput();
-
+        cin >> input;
+        
         if (input == 1) {
-            list[i] = new Product;
-            list[i]->Product_add(*list[i]);
-            i++;
+            manager.addProduct();
         }
-        else if (input == 2) list[i]->print_product(*list, i);
+        else if (input == 2) manager.printAllProduct();
         else if (input == 3) break;
         else cout << "PLZ Enter vaild Number!\n";
-
     }
-
-
-}
-
-int userInput() {
-    int input;
-    cin >> input;
-    return input;
 }
