@@ -1,32 +1,13 @@
-#include "stackInt.h"
 #include <iostream>
+#include "Students.h"
+#include "ClassStack.h"
+
 using namespace std;
 
 int main() {
-
-    int size;
-    cin >> size;
-    MyStackInt myStack(size);
-    string whatTodo("");
-    int numToPut = 0;
-
-    while (whatTodo != "print"){
-
-        cin >> whatTodo;
-
-        if (whatTodo == "push") {
-            cin >> numToPut;
-            //cout << numToPut;
-            myStack.push(numToPut);
-        }
-        else if (whatTodo == "pop") myStack.pop();
-        else {
-            myStack.display();
-            break;
-        }
-
-    }
-
+    ClassStack stack;
+    stack.loadData("students2.txt");
+    stack.display();
 
     return 0;
 }

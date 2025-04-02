@@ -1,5 +1,5 @@
 CC = g++
-SRC = DS032.cpp StackInt.cpp
+SRC = DS032.cpp StudentPlusStack.cpp
 OBJ = $(SRC:.c=.o)
 EXEC = main
 
