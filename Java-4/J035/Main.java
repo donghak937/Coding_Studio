@@ -13,12 +13,9 @@ public class Main {
         date = sc.nextLine();
         int answer = 0;
 
-        answer += Integer.parseInt(date.substring(0,1));
-        answer += Integer.parseInt(date.substring(1,2));
-        answer += Integer.parseInt(date.substring(2,3));
-        answer += Integer.parseInt(date.substring(3,4));
-        answer += Integer.parseInt(date.substring(4,6));
-        answer += Integer.parseInt(date.substring(6,8));
+        for(int i = 0; i < 7; i++){
+            answer += Integer.parseInt(date.substring(0+i,1+i));
+        }
 
         System.out.println(answer);
         sc.close();
