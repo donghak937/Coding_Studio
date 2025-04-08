@@ -15,12 +15,12 @@ public class Main {
 }
 
 class Lotto{
-    int[] numbers = new int[6];
+    int[] numbers;
     Random random = new Random();
 
     public Lotto(){ // 로또 6자리
         // int[] numbers = new int[6];
-        //생성여서 여기서 선언하면 되는 것 아닌가?
+        //생성자자여서 여기서 선언하면 되는 것 아닌가?
         //여기서 생성하면 다른곳에서 사용가능한게 아닌가?
         for(int i = 0; i < 6; i++){
             numbers[i] = random.nextInt(45) + 1;
