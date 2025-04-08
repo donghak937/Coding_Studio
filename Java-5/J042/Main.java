@@ -9,8 +9,8 @@ public class Main {
 
     void J042(){
         Lotto a = new Lotto();
-        //a.printNumbers();
-        a.remakeAuto();
+        a.printNumbers();
+        //a.remakeAuto();
         a.remake();
    }
 
@@ -61,6 +61,10 @@ class Lotto{
     }
 
     public void remake(){
+        System.out.println("입력하세요\n");
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = 0;
+        }
         int a;
         Scanner sc = new Scanner(System.in);
         for (int i = 0; i < numbers.length; i++) {
