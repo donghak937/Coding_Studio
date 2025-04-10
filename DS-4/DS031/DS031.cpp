@@ -8,16 +8,17 @@ int main() {
     cin >> size;
     MyStackInt myStack(size);
     string whatTodo("");
+    elem a;
     int numToPut = 0;
 
-    while (whatTodo != "print"){
+    while (whatTodo != "print") {
 
         cin >> whatTodo;
 
         if (whatTodo == "push") {
-            cin >> numToPut;
+            cin >> a.num;
             //cout << numToPut;
-            myStack.push(numToPut);
+            myStack.push(a);
         }
         else if (whatTodo == "pop") myStack.pop();
         else {

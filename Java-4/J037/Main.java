@@ -26,6 +26,11 @@ public class Main {
         else System.out.println("No");
 
         sc.close();
+
+        //Arrays import
+        //string 두개 만들기
+        //알파벳 카운트 배열 2개 만들기기
+        //캐릭터.isAlphabetic
    }
 
 }
