@@ -17,4 +17,5 @@ public:
     void display();     // function for displaying the Stack 
     Student stackTop();     // top function for checking the topmost element present in the Stack 
     void loadData(string filename);
+    void clear();
 };

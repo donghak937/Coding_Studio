@@ -41,26 +41,18 @@ int ClassStack::isEmpty() {
 
 }
 void ClassStack::display() {
-    double max = 0;
     Student a("",0);
-    for (int i = 0; i < top - 1; i++) {
-        if (S[i]->getScore() > max) {
-            max = S[i]->getScore();
-        }
-    }
-    cout << "Top GPA : " << max << endl;
-
+    cout << "Top GPA = " << S[0]->getScore() << endl;
     while (isEmpty()) {
         a = pop();
-        if (a.getScore() == max) {
-            cout << a.getName() << endl;
-        }
+        cout << a.getName() << endl;
     }
 }
 Student ClassStack::stackTop() {
     return *S[top - 1];
 }
 void ClassStack::loadData(string filename) {
+    double max = 0;
     string name;
     double score;
     ifstream file(filename);
@@ -68,7 +60,20 @@ void ClassStack::loadData(string filename) {
         if (file.eof()) break;
         file >> score >> name;
         Student* a = new Student(name, score);
-        push(*a);
+        if (a->getScore() > max) {
+            max = a->getScore();
+            clear();
+            push(*a);
+        }
+        else if (a->getScore() == max){
+            push(*a);
+        }
     }
     file.close();
+}
+
+void ClassStack::clear(){
+    while (isEmpty()) {
+        pop();
+    }
 }
