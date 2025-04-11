@@ -1,12 +1,12 @@
 CC = g++
 SRC = DS031.cpp StackInt.cpp
-OBJ = $(SRC:.c=.o)
-EXEC = main
+OBJ = $(SRC:.cpp=.o)
+EXEC = mains
 
 $(EXEC): $(OBJ)
 	$(CC) -o $@ $^
 
-%.o: %.c %.h
+%.o: %.cpp %.h
 	$(CC) -c $<
 
 clean:

@@ -1,12 +1,12 @@
 CC = g++
 SRC = DS033.cpp CouponStack.cpp
-OBJ = $(SRC:.c=.o)
+OBJ = $(SRC:.cpp=.o)
 EXEC = main
 
 $(EXEC): $(OBJ)
 	$(CC) -o $@ $^
 
-%.o: %.c %.h
+%.o: %.cpp %.h
 	$(CC) -c $<
 
 clean:
