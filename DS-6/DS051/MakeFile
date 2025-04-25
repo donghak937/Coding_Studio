@@ -1,5 +1,5 @@
 CC = g++
-SRC = DS041.cpp StackIntList.cpp
+SRC = DS051.cpp queueInt.cpp
 OBJ = $(SRC:.cpp=.o)
 EXEC = main
 
