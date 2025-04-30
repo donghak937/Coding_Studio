@@ -37,7 +37,7 @@ int MyQueueIntList::dequeue() {
     Node* p;
     int x = -1; // initially setting x as -1 
     if (isEmpty()) { 
-		cout << "Queue is Empty!" << endl;
+		return -1;
     }
 	else
 	{
