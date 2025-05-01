@@ -11,7 +11,7 @@ public class WordCRUD {
     void addWord() {
         String english, korean;
         int level;
-        Scanner s = new Scanner(System.in);
+        Scanner s = new Scanner(System.in, "EUC-KR");
 
         System.out.print("English > ");
         english = s.next();
@@ -30,7 +30,7 @@ public class WordCRUD {
     void editWord() {
         String english, korean;
         int level;
-        Scanner s = new Scanner(System.in);
+        Scanner s = new Scanner(System.in, "EUC-KR");
 
         System.out.print("Write a word to edit > ");
         english = s.next();
@@ -61,7 +61,7 @@ public class WordCRUD {
 
     void deleteWord() {
         String english;
-        Scanner s = new Scanner(System.in);
+        Scanner s = new Scanner(System.in, "EUC-KR");
 
         System.out.print("Write a word to delete > ");
         english = s.next();

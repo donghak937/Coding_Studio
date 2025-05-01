@@ -8,7 +8,7 @@ public class Main {
 
     public void run() {
         int menu, quit = 0;
-        Scanner s = new Scanner(System.in);
+        Scanner s = new Scanner(System.in, "EUC-KR");
         WordCRUD manager = new WordCRUD();
 
         while (true) {
