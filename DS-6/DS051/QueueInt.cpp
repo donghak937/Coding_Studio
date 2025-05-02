@@ -2,6 +2,12 @@
 #include <iostream>
 using namespace std;
 
+MyQueueInt::MyQueueInt() { 
+	front = rear = -1;
+	this->size = 10;		
+	Q = new elem[size];					//Memory is allocated for the Queue in the HEAP
+}
+
 MyQueueInt::MyQueueInt(int size) { 
 	front = rear = -1;
 	this->size = size;		

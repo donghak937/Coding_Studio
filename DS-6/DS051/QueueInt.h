@@ -14,6 +14,7 @@ private:
 	int size;   // size of the queue 
 	elem* Q;     // dynamically allocated space for queue 
 public:
+    MyQueueInt();
     MyQueueInt(int size);    // constructor to make the Queue with size 
     ~MyQueueInt();           // Destructor to remove from memory 
     void enqueue(elem x);   // enqueue function for inserting an element at the rear of Queue
