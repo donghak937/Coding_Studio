@@ -25,7 +25,7 @@ void merge(int *arr,int left, int mid, int right){
     while (j <= right) tmp[k++] = arr[j++];
 
     for(int a = 0; a < right - left + 1; a++){
-        arr[a] = tmp[a];
+        arr[left+ a] = tmp[a];
     }
     #ifdef DEBUGMODE
     print(arr, 6);
