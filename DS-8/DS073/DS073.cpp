@@ -7,16 +7,21 @@ void print(int *arr, int n){
     cout << endl;
 }
 
-void bubbleSort(int *arr, int n, int order){
+void bubbleSort1(int *arr, int n){
     for(int i = n; i > 0; i--){
         for(int j = 0; j < i-1; j++){
-            if (order == 1){
-                if (arr[j] > arr[j+1]) swap(arr[j], arr[j+1]);
-            }
-            else if (order == 2){
-                if (arr[j] < arr[j+1]) swap(arr[j], arr[j+1]);
-            }
-            
+            if (arr[j] > arr[j+1]) swap(arr[j], arr[j+1]);
+        }
+#ifdef DEBUGMODE
+    print(arr, n);
+#endif
+    }
+}
+
+void bubbleSort2(int *arr, int n){
+    for(int i = n; i > 0; i--){
+        for(int j = 0; j < i-1; j++){
+            if (arr[j] < arr[j+1]) swap(arr[j], arr[j+1]);
         }
 #ifdef DEBUGMODE
     print(arr, n);
@@ -34,14 +39,17 @@ int main(){
         cin >> arr[i];
     }
     
-    print(arr, size);
     cout << "=== ascending order ===" <<endl;
-    bubbleSort(arr, size, 1);
+    bubbleSort1(arr, size);
+    #ifndef DEBUGMODE
     print(arr, size);
+    #endif
 
     cout << "=== descending order ===" <<endl;
-    bubbleSort(arr, size, 2);
+    bubbleSort2(arr, size);
+    #ifndef DEBUGMODE
     print(arr, size);
+    #endif
 
     return 0;
 }

@@ -37,7 +37,9 @@ int main(){
     
     print(arr, size);
     selectionSort(arr, size);
+    #ifndef DEBUGMODE
     cout << "=== insertion sort ===" << endl;
     print(arr, size);
+    #endif
     return 0;
 }

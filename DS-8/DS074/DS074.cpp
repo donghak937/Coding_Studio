@@ -13,21 +13,21 @@ void quickSort(int *arr, int start, int end, int size){
     }
 
     int temp;
-    int pivot = start;
-    int i = pivot + 1;
-    int j = end;
+    int pivot = end;
+    int i = start;
+    int j = pivot - 1;
 
     while(j >= i){
-        while(i <= end && arr[i] < arr[pivot]){
+        while(i <= pivot - 1 && arr[i] < arr[pivot]){
             i++;
         }
-        while(j > start && arr[j] > arr[pivot]){
+        while(j >= start && arr[j] > arr[pivot]){
             j--;
         }
         if(i > j){
             temp = arr[pivot];
-            arr[pivot] = arr[j];
-            arr[j] = temp;
+            arr[pivot] = arr[i];
+            arr[i] = temp;
         }
         else {
             temp = arr[i];
@@ -35,12 +35,11 @@ void quickSort(int *arr, int start, int end, int size){
             arr[j] = temp;
         }
     }
-#ifdef DEBUGMODE
+    #ifdef DEBUGMODE
     print(arr, size);
-#endif
-    quickSort(arr, start, j-1, size);
-    quickSort(arr, j+1, end, size);
-
+    #endif
+    quickSort(arr, start, i - 1, size);
+    quickSort(arr, i + 1, end, size);
 }
 
 int main(){
@@ -56,7 +55,11 @@ int main(){
     print(arr, size);
 
     quickSort(arr, 0, size-1, size);
+    
+    #ifndef DEBUGMODE
+    cout << "=== quick sort ===" << endl;
     print(arr, size);
+    #endif
 
     return 0;
 }

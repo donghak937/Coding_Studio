@@ -16,9 +16,9 @@ void insertionSort(int *arr, int n){
         for(j = i-1; j >= 0; j--){
             if (arr[j] > tmp) swap(arr[j], arr[j+1]);
         }
-#ifdef DEBUGMODE
+    #ifdef DEBUGMODE
     print(arr, n);
-#endif
+    #endif
     }
 }
 
@@ -34,7 +34,9 @@ int main(){
     
     print(arr, size);
     insertionSort(arr, size);
+    #ifndef DEBUGMODE
     cout << "=== bubble sort ===" << endl;
     print(arr, size);
+    #endif
     return 0;
 }
