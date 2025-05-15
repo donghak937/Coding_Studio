@@ -7,7 +7,7 @@ void print(int *arr, int n){
     cout << endl;
 }
 
-void merge(int *arr,int left, int mid, int right){
+void merge(int *arr, int left, int mid, int right, int size){
     int* tmp = new int[right - left + 1];
     int i = left;
     int j = mid + 1;
@@ -28,18 +28,19 @@ void merge(int *arr,int left, int mid, int right){
         arr[left+ a] = tmp[a];
     }
     #ifdef DEBUGMODE
-    print(arr, 6);
+    print(arr, size);
     #endif
     
 
 }
 
-void mergeSort(int* arr, int left, int right){
+void mergeSort(int* arr, int left, int right, int size){
     if (left < right){
         int mid = (right + left) / 2;
-        mergeSort(arr, left, mid);
-        mergeSort(arr, mid+1, right);
-        merge(arr, left, mid, right);
+        mergeSort(arr, left, mid, size);
+        mergeSort(arr, mid+1, right, size);
+        merge(arr, left, mid, right, size);
+
         
     }
 }
@@ -55,8 +56,10 @@ int main(){
     }
     
     print(arr, size);
-    mergeSort(arr, 0, size -1);
-    cout << "====" <<endl;
+    mergeSort(arr, 0, size -1, size);
+    #ifndef DEBUGMODE
+    cout << "=== merge sort ===" << endl;
     print(arr, size);
+    #endif
     return 0;
 }

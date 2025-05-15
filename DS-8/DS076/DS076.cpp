@@ -58,6 +58,8 @@ void quickSort(int *arr, int start, int end, int size){
         return;
     }
 
+    // Pivot is arr[0]
+
     int temp;
     int pivot = start;
     int i = pivot + 1;
