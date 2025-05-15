@@ -20,7 +20,7 @@ void selectionSort(int *arr, int n){
         }
         if(i != min_i) swap(arr[i], arr[min_i]);
 #ifdef DEBUGMODE
-    print(arr, n);
+    print(arr, n);    
 #endif
     }
 }
@@ -37,7 +37,7 @@ int main(){
     
     print(arr, size);
     selectionSort(arr, size);
-    cout << "====" <<endl;
+    cout << "=== insertion sort ===" << endl;
     print(arr, size);
     return 0;
 }

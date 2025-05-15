@@ -34,7 +34,7 @@ int main(){
     
     print(arr, size);
     insertionSort(arr, size);
-    cout << "====" <<endl;
+    cout << "=== bubble sort ===" << endl;
     print(arr, size);
     return 0;
 }
