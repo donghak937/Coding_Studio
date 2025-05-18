@@ -26,6 +26,7 @@ public class Main {
                     min = num;
                 }
             }
+            input.close();
 
         } catch (FileNotFoundException e) {
             System.out.println("File not Found");
