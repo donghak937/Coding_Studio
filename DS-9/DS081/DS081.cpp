@@ -37,7 +37,9 @@ TreeNode* buildTree(int *nums, int size) {
 void printInOrderTree(TreeNode* root) {
     if (!root) return;
     printInOrderTree(root->left);
-    cout << root->val << " ";
+    if (root->val != 0){
+        cout << root->val << " ";
+    }
     printInOrderTree(root->right);
 }
  
