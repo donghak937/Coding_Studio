@@ -60,8 +60,6 @@ class ChatThread extends Thread{
 			String line = null;	
 			while((line = br.readLine()) != null){
 								
-					
-
 				if(line.equals("/quit"))
 					break;
 				if(line.indexOf("/to ") == 0){	
@@ -123,7 +121,6 @@ class ChatThread extends Thread{
 				pw.print("\n");
 				pw.flush();
 			}
-
 		}
 	}	
 }				
