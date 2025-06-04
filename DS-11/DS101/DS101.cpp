@@ -8,12 +8,12 @@ void merge(int* a, int* b, int n1, int n2, int n3, int n4){
     j = n3;
     k = n1;
     
-    while((i <= n3) && (j <= n4)){
+    while((i <= n2) && (j <= n4)){
         if (a[i] <= a[j]){
-            b[k++] = a[i++];
+            b[k++] = a[j++];
         }
         else{
-            b[k++] = a[j++];
+            b[k++] = a[i++];
         }
     }
     if (i > n2){
@@ -22,7 +22,7 @@ void merge(int* a, int* b, int n1, int n2, int n3, int n4){
         }
     }
     else{
-        for(t = i; i <= n2; t++){
+        for(t = i; t <= n2; t++){
             b[k + t - i] = a[t];
         }
     }
@@ -30,23 +30,23 @@ void merge(int* a, int* b, int n1, int n2, int n3, int n4){
 }
 void merge_pass(int* a, int* b, int n, int s){
     int i, j;
-    for(i = 0; i < n - 2 * s + 1; i += 2 * s){
-        merge(a, b, i, i + s -1, i+s, i + s * 2 - 1);
+    for(i = 0; i < (n - 2 * s + 1); i += 2 * s){
+        merge(a, b, i, i + s - 1, i + s, i + s * 2 - 1);
     }
     if (i + s <= n){
-        merge (a, b, i, i+s - 1, i+s, n);
+        merge (a, b, i, i + s - 1, i + s, n);
     }
     else{
         for(j = i; j <= n; j++){
-            b[j] = a[i];
+            b[j] = a[j];
         }
     }
 
 }
-int* merge_sort(int* a, int size){
+void merge_sort(int* a, int size){
     int* b = new int[size];
     int k = 1;
-    while (k > size){
+    while (k < size){
         merge_pass(a, b, size - 1, k);
         k *= 2;
         merge_pass(b, a, size - 1, k);
@@ -54,7 +54,6 @@ int* merge_sort(int* a, int size){
         
     }
 
-    return a;
 }
 
 int main(){
