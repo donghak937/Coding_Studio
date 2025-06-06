@@ -50,10 +50,8 @@ void merge_sort(int* a, int size){
         merge_pass(a, b, size - 1, k);
         k *= 2;
         merge_pass(b, a, size - 1, k);
-        k *= 2;
-        
+        k *= 2; 
     }
-
 }
 
 int main(){
