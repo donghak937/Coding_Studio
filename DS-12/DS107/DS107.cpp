@@ -24,8 +24,7 @@ int main (){
         cin >> tmp;
         b.push_back(tmp);
     }
-    a.sort(comp);
-    b.sort(comp);
+
     a.merge(b);
     a.sort(comp);
 
