@@ -8,6 +8,7 @@ int main () {
     queue<int> a;
     int size;
     int count = 1;
+    int tmp;
     cin >> size;
     for(int i = 1; i <= size; i++){
         a.push(i);
@@ -19,6 +20,9 @@ int main () {
             count++;
         }
         else{
+            tmp = a.front();
+            a.pop();
+            a.push(tmp);
             count++;
         }
     }
