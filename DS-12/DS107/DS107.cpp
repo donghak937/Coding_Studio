@@ -3,6 +3,10 @@
 
 using namespace std;
 
+int comp(int a, int b){
+    return a > b;
+}
+
 int main (){
     list<int> a;
     list<int> b;
@@ -20,13 +24,14 @@ int main (){
         cin >> tmp;
         b.push_back(tmp);
     }
-    a.sort();
-    b.sort();
+    a.sort(comp);
+    b.sort(comp);
     a.merge(b);
+    a.sort(comp);
 
     p = a.begin();
 
-    for(p; p != b.end(); p++){
+    for(p; p != a.end(); p++){
         cout << *p << " ";
     }
 }
