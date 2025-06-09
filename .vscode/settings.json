@@ -49,6 +49,7 @@
         "stack": "cpp",
         "algorithm": "cpp",
         "deque": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "list": "cpp"
     }
 }
