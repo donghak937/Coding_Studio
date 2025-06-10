@@ -1,4 +1,5 @@
 #include "Heap.h"
+#include <iostream>
 
 MinHeap::MinHeap() {
     length = 0;
@@ -9,80 +10,79 @@ MinHeap::~MinHeap() {
 }
 
 void MinHeap::insertKey(int value) {
-    if (length >= 30) {
-        cout << "Heap is full\n";
-        return;
-    }
     arr[length] = value;
-    minHeapifyUp(length);
     length++;
+    minHeapifyUp(length-1);
+
 }
 
 void MinHeap::arrayEnter(){
     int size;
+    length = 1;
     cin >> size;
-    
-
+    for(int i = 1; i <= size; i++){
+        cin >> arr[i];
+        minHeapifyUp(i);
+        
+    }
+    length = size + 1;
 }
 
 int MinHeap::deleteKey() {
-    if (isEmpty()) {
-        cout << "Heap is empty\n";
-        return -1;
-    }
-    int rootValue = arr[0];
-    arr[0] = arr[length - 1];
-    length--;
-    minHeapifyDown(0);
-    return rootValue;
+    int tmp = arr[1];
+    arr[1] = arr[--length];
+    minHeapifyDown(1);
+    return tmp;
 }
 
 int MinHeap::peek() {
-    if (isEmpty()) {
-        cout << "Heap is empty\n";
-        return -1;
-    }
-    return arr[0];
+    return arr[length - 1];
 }
 
 int MinHeap::size() {
-    return length;
+    return length-1;
 }
 
 bool MinHeap::isEmpty() {
-    return length == 0;
+    return length == 1;
 }
 
-void MinHeap::minHeapifyUp(int index) {
-    while (index > 0) {
-        int parent = (index - 1) / 2;
-        if (arr[parent] > arr[index]) {
-            swap(arr[parent], arr[index]);
-            index = parent;
-        } else {
+void MinHeap::minHeapifyUp(int index) { //아래에 하나가 생기면 일어나는 일
+    int parent = index / 2;
+    int tmp = arr[index];
+    while (index != 1 && (arr[parent] > tmp)){
+        arr[index] = arr[parent];
+        index = parent;
+        parent /= 2;
+    }
+    arr[index] = tmp;
+}
+
+void MinHeap::minHeapifyDown(int root) { //그 노드를 기준으로 재구성
+    int parent = root;
+    int child = parent * 2;
+    int tmp = arr[root];
+
+    while (child < length){
+        if (child+1 < length &&  arr[child] > arr[child + 1]){
+            child++;
+        }
+
+        if (arr[child] >= tmp){
             break;
         }
+        else{
+            arr[parent] = arr[child];
+            parent = child;
+            child *= 2;
+        }
     }
-}
-
-void MinHeap::minHeapifyDown(int root) {
-    int smallest = root;
-    int left = 2 * root + 1;
-    int right = 2 * root + 2;
-
-    if (left < length && arr[left] < arr[smallest])
-        smallest = left;
-    if (right < length && arr[right] < arr[smallest])
-        smallest = right;
-
-    if (smallest != root) {
-        swap(arr[root], arr[smallest]);
-        minHeapifyDown(smallest);
-    }
+    arr[parent] = tmp;
 }
 
 void MinHeap::printHeap() {
-    for (int i = 0; i < length; i++) {
+    
+    for (int i = 1; i < length; i++) {
         cout << arr[i] << " ";
     }
     cout << endl;

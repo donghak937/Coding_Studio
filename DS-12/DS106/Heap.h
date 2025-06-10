@@ -1,5 +1,4 @@
 #include <iostream>
-
 using namespace std;
 
 class MinHeap
@@ -14,6 +13,7 @@ public:
     int deleteKey();
     int peek();
     int size();
+    void arrayEnter();
     bool isEmpty();
     void minHeapifyUp(int index); //index의 부모 방향으로 heap 구성
     void minHeapifyDown(int root); // root = 0 root의 자식방향으로 heap
