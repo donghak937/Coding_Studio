@@ -26,8 +26,11 @@ public:
     void findCards(string name); // Search a card by name from all cards
     void loadCards(string filename);
     void sortByCode();
+    void sortByCredit();
+    void sortByName();
     void addCard(); // Add a card
     void editCard(); // Change grade of a card
+    void isHigher(int credit);
 
 };
 

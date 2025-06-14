@@ -27,5 +27,13 @@ public:
     static bool cmpCode(Card* c1, Card* c2){
         return (c1->getCode() < c2->getCode()); 
     }
+
+    static bool cmpCredit(Card* c1, Card* c2){
+        return (c1->getCredit() < c2->getCredit()); 
+    }
+
+    static bool cmpName(Card* c1, Card* c2){
+        return (c1->getName() < c2->getName()); 
+    }
 };
 #endif
