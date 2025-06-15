@@ -47,7 +47,7 @@ void CardManager::addCard(){
             if (gradescore.count(grade) > 0) {
                 break;  // 유효한 성적이므로 탈출
             } else {
-                cout << "Invalid grade. Please try again." << endl;
+                cout << "Invalid grade. Please try again. " << endl;
             }
         }
 
